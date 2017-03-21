@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { Login } from './login';
 import { routes } from './app.routes';
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { routes } from './app.routes';
     HttpModule,
     RouterModule.forRoot(routes, {
       useHash: true
-    })
+    }),
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
