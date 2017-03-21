@@ -5,6 +5,9 @@ var express = require('express'),
     path = require('path'),
     config = require('./_config');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.use("/", router);
 
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -14,8 +17,7 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
 
 app.listen(config.port, function() {
     console.log('App is running on port' + config.port);
