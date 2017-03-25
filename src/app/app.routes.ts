@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component'
-import { Login } from './login';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 // Define which component should be loaded based on the current URL
 export const routes: Routes = [
-  { path: '',       component: Login },
-  { path: 'login',  component: Login },
+  { path: '',       component: SigninComponent },
+  { path: 'signin',  component: SigninComponent },
+  { path: 'signup',  component: SignupComponent }
 ];

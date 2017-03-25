@@ -49,7 +49,11 @@ router.post("/", function(req, res) {
     res.status(404).send({ "error": "invaild request, use api instaed" });
 });
 
-router.post("/login", function(req, res) {
+router.post("/signin", function(req, res) {
+    res.status(200).send({ token: Math.floor(Math.random() * 1000) });
+});
+
+router.post("/signup", function(req, res) {
     res.status(200).send({ token: Math.floor(Math.random() * 1000) });
 });
 

@@ -1,23 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 
-
 @Component({
-  selector: 'login',
-  templateUrl: './login.html',
-  //styles: [ styles ]
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
 })
+export class SigninComponent implements OnInit {
 
-export class Login {
-    constructor(public router: Router, public http: Http) {
-    }
-
-    login(username, password) {
-        var headers = new Headers();
+  constructor(public router: Router, public http: Http) { }
+  
+  signIn(username, password){
+     var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         let body = 'username='+username+'&amp;password='+password;
-        this.http.post('/login', body, {headers: headers})
+        this.http.post('/signin', body, {headers: headers})
             .subscribe(
                 response => {
                     console.info(response);
@@ -28,9 +26,8 @@ export class Login {
                     console.error(error);
                 }
             );
-    }
+  }
+  ngOnInit() {
+  }
 
-    signup(event) {
-        this.router.navigate(['signup']);
-    }
 }

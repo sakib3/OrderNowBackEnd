@@ -1,0 +1,21 @@
+<div class="login">
+    <h1>Signup</h1>
+    <form role="form" (submit)="signup(name.value,email.value, password.value)">
+        <div class="form-group">
+            <md-input-container>
+                <input type="text" #username id="name" placeholder="Username" mdInput>
+            </md-input-container>
+        </div>
+        <div class="form-group">
+            <md-input-container>
+                <input type="text" #username id="email" placeholder="Email" mdInput>
+            </md-input-container>
+        </div>
+        <div class="form-group">
+            <md-input-container>
+                <input type="password" #password id="password" placeholder="Password" mdInput>
+            </md-input-container>
+        </div>
+        <button type="submit" md-button>Submit</button>
+    </form>
+</div>
