@@ -1,0 +1,14 @@
+<div *ngIf="product!=null">
+    <div>
+        <md-input-container md-no-float>
+            <input mdInput placeholder="Id" [(ngModel)]="product.id" disabled>
+        </md-input-container>
+        <md-input-container>
+            <input mdInput placeholder="Name" [(ngModel)]="product.name">
+        </md-input-container>
+    </div>
+    <div>
+        <button md-raised-button color="primary" (click)="console.log(1)">Save</button>
+        <button md-raised-button (click)="goBack()">Back</button>
+    </div>
+</div>

@@ -15,7 +15,11 @@ export class WebService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-
+  getProduct(shopId, productId): Observable<any> {
+     return this.http.get(`/shops/${shopId}/products/${productId}`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
    getLocationName(lat,lng): Observable<any>{
     return this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true`)
       .map(this.extractData)

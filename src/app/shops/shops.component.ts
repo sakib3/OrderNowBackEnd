@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { WebService } from '../web.service';
@@ -32,6 +32,14 @@ export class ShopsComponent implements OnInit {
       .subscribe(
       data => console.log(data),
       err => console.error(err));
+  }
+  viewProduct(productId) {
+    this.router.navigate(['products'], {queryParams: {shopId: this.shop.id, productId: productId}});
+    //this.router.navigate()
+    //  this.webService.getProduct("macGuid", productId)
+    //   .subscribe(
+    //   product => { console.log(product); this.product = product },
+    //   err => console.error(err));
   }
 }
 

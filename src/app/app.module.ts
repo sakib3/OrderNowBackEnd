@@ -12,12 +12,13 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ShopsComponent } from './shops/shops.component';
 import { WebService } from './web.service';
+import { ProductsComponent } from './products/products.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent, SigninComponent, ShopsComponent
+    AppComponent, SignupComponent, SigninComponent, ShopsComponent, ProductsComponent
   ],
   imports: [
     BrowserModule,
