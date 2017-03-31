@@ -91,7 +91,11 @@ var express = require('express'),
                     time: '07:00 -22:00'
                 }
             ],
-            notice: 'This is a notice!'
+            notice: {
+                message: 'This is a notice!',
+                startDate: '2017-01-01',
+                endDate: '2017-04-01'
+            }
         }]
     }
 
