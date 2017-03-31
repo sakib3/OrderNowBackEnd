@@ -10,27 +10,36 @@ var express = require('express'),
                     name: 'Berger',
                     category: 'Type 1',
                     price: '60',
-                    ingradients: [{
-                        id: 'bbqGuid',
-                        name: 'Bbq Deep'
-                    }]
+                    subproducts: [{
+                            id: 'bbqGuid',
+                            name: 'Bbq Deep',
+                            price: '2'
+                        },
+                        {
+                            id: 'saladGuid',
+                            name: 'Salad',
+                            price: '5'
+                        }
+                    ]
                 }, {
                     id: 'pizzaGuid',
                     name: 'pizza',
                     category: 'Type 2',
                     price: '80',
-                    ingradients: [{
+                    subproducts: [{
                         id: 'saladGuid',
-                        name: 'Salad'
+                        name: 'Salad',
+                        price: '5'
                     }]
                 }, {
                     id: 'pitaGuid',
                     name: 'Pita',
                     category: 'Type 3',
                     price: '25',
-                    ingradients: [{
+                    subproducts: [{
                         id: 'curryGuid',
-                        name: 'Curry Deep'
+                        name: 'Curry Deep',
+                        price: '3'
                     }]
                 },
                 {
@@ -38,9 +47,10 @@ var express = require('express'),
                     name: 'Drum',
                     category: 'Type 4',
                     price: '35',
-                    ingradients: [{
+                    subproducts: [{
                         id: 'chilliGuid',
-                        name: 'Chilli Deep'
+                        name: 'Chilli Deep',
+                        price: '7'
                     }]
                 }
             ],
@@ -86,35 +96,35 @@ var express = require('express'),
     }
 
 router.use(function(req, res, next) {
-    next()
-})
+    next();
+});
 
 router.get('/', function(req, res) {
-    res.render('index')
-        // res.status(404).send({"error": "invaild request, use api instaed"})
-})
+    res.render('index');
+    // res.status(404).send({"error": "invaild request, use api instaed"})
+});
 
 router.post('/', function(req, res) {
     res.status(404).send({
         'error': 'invaild request, use api instaed'
-    })
-})
+    });
+});
 
 router.post('/signin', function(req, res) {
     res.status(200).send({
         token: Math.floor(Math.random() * 1000)
-    })
-})
+    });
+});
 
 router.post('/signup', function(req, res) {
     res.status(200).send({
         token: Math.floor(Math.random() * 1000)
-    })
-})
+    });
+});
 
 router.get('/shops', function(req, res) {
-    res.status(200).send(shopsMock.shops.find(s => s.id == 'macGuid'))
-})
+    res.status(200).send(shopsMock.shops.find(s => s.id == 'macGuid'));
+});
 
 router.get('/shops/:shopId/products/:productId', function(req, res) {
     res.status(200)
@@ -122,6 +132,6 @@ router.get('/shops/:shopId/products/:productId', function(req, res) {
             .find(s => s.id == req.params.shopId)
             .products
             .find(p => p.id == req.params.productId));
-})
+});
 
-module.exports = router
+module.exports = router;

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { WebService } from '../web.service';
 import {Subscription} from "rxjs";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-products',
@@ -17,6 +18,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     public router: Router,
     public http: Http,
     private route: ActivatedRoute,
+    private location: Location,
     private webService: WebService) { }
 
   ngOnInit() {
@@ -37,7 +39,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.routeParamsSubscription.unsubscribe();
   }
 
-  goBack() {
+  goBack(): void {
+    this.location.back();
 
   }
 }

@@ -1,11 +1,38 @@
 <div *ngIf="product!=null">
-    <div>
-        <md-input-container md-no-float>
-            <input mdInput placeholder="Id" [(ngModel)]="product.id" disabled>
-        </md-input-container>
-        <md-input-container>
-            <input mdInput placeholder="Name" [(ngModel)]="product.name">
-        </md-input-container>
+    <md-card class="product">
+        <md-card-header>Product</md-card-header>
+        <md-card-content>
+            <md-input-container md-no-float>
+                <input mdInput placeholder="Id" [(ngModel)]="product.id" disabled>
+            </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="Name" [(ngModel)]="product.name">
+            </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="Category" [(ngModel)]="product.category">
+            </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="Price" [(ngModel)]="product.price">
+            </md-input-container>
+        </md-card-content>
+    </md-card>
+    <div *ngIf="product!=null">
+        <md-card class="subproducts">
+            <md-card-header>Sub Products</md-card-header>
+            <md-card-content>
+                <div *ngFor="let sp of product.subproducts">
+                    <md-input-container md-no-float>
+                        <input mdInput placeholder="Id" [(ngModel)]="sp.id" disabled>
+                    </md-input-container>
+                    <md-input-container>
+                        <input mdInput placeholder="Name" [(ngModel)]="sp.name">
+                    </md-input-container>
+                    <md-input-container>
+                        <input mdInput placeholder="Price" [(ngModel)]="sp.price">
+                    </md-input-container>
+                </div>
+            </md-card-content>
+        </md-card>
     </div>
     <div>
         <button md-raised-button color="primary" (click)="console.log(1)">Save</button>
