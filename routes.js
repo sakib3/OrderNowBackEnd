@@ -1,6 +1,8 @@
 var express = require('express'),
     router = express.Router(),
-
+    mongoose = require('mongoose'),
+    config = require('./_config'),
+    Shop = require('./server/models/shop'),
     shopsMock = {
         shops: [{
             id: 'macGuid',
@@ -97,8 +99,16 @@ var express = require('express'),
                 endDate: '2017-04-01'
             }
         }]
-    }
+    };
 
+// connect to Mongoose
+mongoose.connect(config.mongoURI, function(err, res) {
+    if (err) {
+        console.log('Error connecting to the database url : ' + config.mongoURI + err);
+    } else {
+        console.log('Connected to Database: ' + config.mongoURI);
+    }
+});
 router.use(function(req, res, next) {
     next();
 });
@@ -111,6 +121,18 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     res.status(404).send({
         'error': 'invaild request, use api instaed'
+    });
+});
+
+router.get('/createtest', function(req, res) {
+    Shop.addProducts({ name: 'MacDonals', address: '123' }, function(err, shop) {
+        res.json(shop);
+    });
+});
+
+router.get('/test', function(req, res) {
+    Shop.getProducts(function(err, shop) {
+        res.json(shop);
     });
 });
 
