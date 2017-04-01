@@ -1,6 +1,6 @@
 var config = {};
 
-config.mongoURI = 'mongodb://localhost/ordernow';
+config.mongoURI = process.env.DBURI;
 
 config.port = process.env.PORT || 8000;
 
